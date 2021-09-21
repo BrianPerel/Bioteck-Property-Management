@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import javax.persistence.OneToMany;
 import javax.persistence.CascadeType;
 import org.hibernate.annotations.GenericGenerator;
-//import org.hibernate.annotations.NaturalId;
 
 import bioteck.apartment.db.IProperty;
 
@@ -158,7 +157,7 @@ public class Apartment implements Comparable<Apartment> {
 	 *         the next.
 	 */
 	public boolean equals(Object o) {
-		if (o == null || !(o instanceof Apartment))
+		if (!(o instanceof Apartment))
 			return false;
 		Apartment a = (Apartment) o;
 		return this.complex.equals(a.complex) && this.number == a.number;
