@@ -9,9 +9,9 @@
 plugins {
     // Apply the java plugin to add support for Java
     id 'java'
-// Apply the application plugin to add support for building an application
+	// Apply the application plugin to add support for building an application
     id 'war'
-   // id 'application'
+    // id 'application'
     id 'org.gretty' version '2.2.0'
 }
 
@@ -40,10 +40,10 @@ dependencies {
     compile 'org.jboss.weld.servlet:weld-servlet:2.2.4.Final'
 
     // Use JUnit test framework
-        testCompile('io.rest-assured:rest-assured:3.2.0')
-        testCompile('org.junit.jupiter:junit-jupiter-api:5.3.1')
-        testCompile('org.junit.jupiter:junit-jupiter-params:5.3.1')
-        testRuntime('org.junit.jupiter:junit-jupiter-engine:5.3.1')
+    testCompile('io.rest-assured:rest-assured:3.2.0')
+    testCompile('org.junit.jupiter:junit-jupiter-api:5.3.1')
+    testCompile('org.junit.jupiter:junit-jupiter-params:5.3.1')
+    testRuntime('org.junit.jupiter:junit-jupiter-engine:5.3.1')
 }
 
 // In this section you declare where to find the dependencies of your project

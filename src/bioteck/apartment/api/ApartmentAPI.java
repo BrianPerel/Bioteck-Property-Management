@@ -2,6 +2,7 @@ package bioteck.apartment.api;
 
 import bioteck.apartment.model.Apartment;
 import bioteck.apartment.db.DB;
+import bioteck.apartment.db.Utility;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
