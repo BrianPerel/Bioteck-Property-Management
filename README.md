@@ -30,6 +30,7 @@ Idea / Goal:
 -Start with a Java OOP model with a set of classes 
 	-have input validation
 -Create a database in mySQL 
+-Use Hibernate ORM framework for object relational mapping to map our object oriented domain model to a relational db
 -Create web pages using HTML, CSS, JavaScript
 -Use AngularJS to make the pages dynamic, allowing the data to be placed into the database 
 

@@ -62,7 +62,8 @@ public class PropertyPortfolioTest {
 		ApartmentComplex ac1 = ApartmentComplex.create("Crater in the Wall Apartments", 2000, pp, "University Ave",
 				"Something");
 		ApartmentComplex ac2 = ApartmentComplex.create("LongMeadows", 1000, pp, "Last Lane", "Medium");
-
+		System.out.println(ac1);
+		System.out.println(ac2);
 		assertEquals(3000.0, pp.Cost());
 	}
 }
