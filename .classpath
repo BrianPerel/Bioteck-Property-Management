@@ -56,5 +56,6 @@
 	<classpathentry kind="lib" path="hibernate/lib/txw2-2.3.1.jar"/>
 	<classpathentry kind="lib" path="hibernate/lib/vibur-dbcp-25.0.jar"/>
 	<classpathentry kind="lib" path="hibernate/lib/vibur-object-pool-25.0.jar"/>
+	<classpathentry kind="lib" path="REST/javax.ws.rs-api-2.1.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
