@@ -1,5 +1,8 @@
 package bioteck.apartment.db;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.ws.rs.core.Application;
 
 import bioteck.apartment.api.ApartmentAPI;
@@ -8,9 +11,6 @@ import bioteck.apartment.api.Candidate2ApartmentAPI;
 import bioteck.apartment.api.CandidateAPI;
 import bioteck.apartment.api.PropertyOwnerAPI;
 import bioteck.apartment.api.PropertyPortfolioAPI;
-
-import java.util.HashSet;
-import java.util.Set;
 
 public class RestApplication extends Application {
 	private Set<Object> singletons = new HashSet<>();

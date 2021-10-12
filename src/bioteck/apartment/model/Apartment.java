@@ -1,19 +1,20 @@
 package bioteck.apartment.model;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.GeneratedValue;
-import javax.persistence.ManyToOne;
-import javax.persistence.JoinColumn;
 import javax.persistence.ForeignKey;
-
-import java.util.List;
-import java.util.ArrayList;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.CascadeType;
+import javax.persistence.Table;
+
 import org.hibernate.annotations.GenericGenerator;
 
 import bioteck.apartment.db.IProperty;

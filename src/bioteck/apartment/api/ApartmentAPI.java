@@ -1,14 +1,15 @@
 package bioteck.apartment.api;
 
-import bioteck.apartment.model.Apartment;
-import bioteck.apartment.db.DB;
-import bioteck.apartment.db.Utility;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Arrays;
+
+import bioteck.apartment.db.DB;
+import bioteck.apartment.db.Utility;
+import bioteck.apartment.model.Apartment;
 
 @Path("/apartments")
 @Produces(MediaType.APPLICATION_JSON)

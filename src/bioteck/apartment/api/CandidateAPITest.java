@@ -1,21 +1,17 @@
 package bioteck.apartment.api;
 
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.AfterEach;
-
-import io.restassured.RestAssured;
 import static io.restassured.RestAssured.*;
-import io.restassured.http.Method;
-import io.restassured.http.Header;
-import io.restassured.http.ContentType;
-import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
 
-import java.util.Map;
 import java.util.List;
+import java.util.Map;
+
+import org.junit.jupiter.api.Test;
 
 import bioteck.apartment.model.Candidate;
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+import io.restassured.http.Header;
+import io.restassured.response.Response;
 
 public class CandidateAPITest {
 	private Header acceptJson = new Header("Accept", "application/json");

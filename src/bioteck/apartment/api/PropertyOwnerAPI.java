@@ -1,13 +1,15 @@
 package bioteck.apartment.api;
 
-import bioteck.apartment.model.PropertyOwner;
-import bioteck.apartment.db.DB;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Arrays;
+
+import bioteck.apartment.db.DB;
+import bioteck.apartment.db.Utility;
+import bioteck.apartment.model.PropertyOwner;
 
 @Path("/property-owners")
 @Produces(MediaType.APPLICATION_JSON)

@@ -1,7 +1,8 @@
 package bioteck.apartment.db;
 
-import org.hibernate.Session;
 import java.util.List;
+
+import org.hibernate.Session;
 
 public interface IQuery<T> {
 	public List<T> process(Session s);

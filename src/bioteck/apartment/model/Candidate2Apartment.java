@@ -1,12 +1,12 @@
 package bioteck.apartment.model;
 
-import javax.persistence.ManyToOne;
-import javax.persistence.ForeignKey;
-import javax.persistence.Table;
-import javax.persistence.JoinColumn;
 import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 /**
  * A Key from a Renter to a Apartment to be used for the Renter2Apartment Tree

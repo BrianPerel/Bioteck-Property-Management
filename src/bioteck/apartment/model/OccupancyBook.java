@@ -1,28 +1,11 @@
 package bioteck.apartment.model;
 
-import java.util.Map;
-import java.util.TreeSet;
-import java.util.List;
-import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
-import java.util.HashMap;
-import java.util.stream.Stream;
-import java.util.SortedSet;
 import java.util.stream.Collectors;
-import java.util.ArrayList;
 
-import javax.persistence.ManyToOne;
-import javax.persistence.ForeignKey;
-import javax.persistence.Table;
-import javax.persistence.JoinColumn;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-
-import org.hibernate.Transaction;
-import org.hibernate.Session;
-import java.io.Serializable;
 import bioteck.apartment.db.DB;
 
 /**

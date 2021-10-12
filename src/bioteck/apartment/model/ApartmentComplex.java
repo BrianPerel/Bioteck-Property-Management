@@ -1,30 +1,22 @@
 package bioteck.apartment.model;
 
-import java.util.Map;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Collections;
-import java.util.Collection;
-import java.util.stream.Stream;
-import java.util.stream.Collectors;
-import java.text.DecimalFormat;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.GeneratedValue;
-import javax.persistence.OneToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.ForeignKey;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.CascadeType;
-import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 import org.hibernate.annotations.GenericGenerator;
 
 import bioteck.apartment.db.IProperty;
-
-import java.util.ArrayList;
-//import org.hibernate.annotations.NaturalId;
 
 /**
  * Represents a Apartment Complex which contains apartment(s). Can be identified

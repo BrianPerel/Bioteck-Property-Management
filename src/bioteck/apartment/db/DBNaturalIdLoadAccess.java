@@ -1,6 +1,7 @@
 package bioteck.apartment.db;
 
 import java.util.Map.Entry;
+
 import org.hibernate.NaturalIdLoadAccess;
 
 public interface DBNaturalIdLoadAccess extends NaturalIdLoadAccess {
