@@ -33,7 +33,7 @@ public class ApartmentComplex implements IProperty, Comparable<IProperty> {
 	@GeneratedValue(generator = "increment")
 	@GenericGenerator(name = "increment", strategy = "increment")
 	@Column(name = "id")
-	private Long Id = Long.valueOf(0);
+	private Long id = Long.valueOf(0);
 
 	// @NaturalId
 	@Column(name = "Name", nullable = false)
@@ -57,13 +57,10 @@ public class ApartmentComplex implements IProperty, Comparable<IProperty> {
 	@JoinColumn(name = "PropertyPortfolioId", nullable = true, foreignKey = @ForeignKey(name = "PropertyPortfolioId_FK"))
 	private PropertyPortfolio portfolio;
 
-	private ApartmentComplex() {
-	}
-
 	/**
 	 * Alternative to null.
 	 */
-	public final static ApartmentComplex EMPTY = new ApartmentComplex("", "");
+	public static final ApartmentComplex EMPTY = new ApartmentComplex("", "");
 
 	/**
 	 * Constructs Identifying traits of the Complex. It's Portfolio and the Cost
@@ -74,11 +71,16 @@ public class ApartmentComplex implements IProperty, Comparable<IProperty> {
 	 * @throws IllegalArgumentException if portfolio is null
 	 */
 	public ApartmentComplex(String name, String address) throws IllegalArgumentException {
-		if (name == null)
+		if (name == null) {
 			throw new IllegalArgumentException("Complex Name is null, which is impossible.");
+		}
+		
 		this.name = name;
-		if (address == null)
+		
+		if (address == null) {
 			throw new IllegalArgumentException("Every Complex must have a address");
+		}
+		
 		this.address = address;
 	}
 
@@ -86,7 +88,7 @@ public class ApartmentComplex implements IProperty, Comparable<IProperty> {
 	 * @return Id of Table
 	 */
 	public Long getId() {
-		return this.Id;
+		return this.id;
 	}
 
 	/**
@@ -94,8 +96,10 @@ public class ApartmentComplex implements IProperty, Comparable<IProperty> {
 	 *               apartments typically are, size of property, location info, etc)
 	 */
 	public void setComplexDescription(String desc) {
-		if (desc == null)
+		if (desc == null) {
 			return;
+		}
+		
 		this.desc = desc;
 	}
 
@@ -146,8 +150,9 @@ public class ApartmentComplex implements IProperty, Comparable<IProperty> {
 	 */
 
 	public void setCost(double cost) {
-		if (cost >= 0.0)
+		if (cost >= 0.0) {
 			this.monthlyCosts = cost;
+		}
 	}
 
 	/**
@@ -166,10 +171,12 @@ public class ApartmentComplex implements IProperty, Comparable<IProperty> {
 	 */
 	@Override
 	public boolean equals(Object o) {
-		if (o == null || !(o instanceof ApartmentComplex))
+		if (o == null || !(o instanceof ApartmentComplex)) {
 			return false;
-		ApartmentComplex AP = (ApartmentComplex) o;
-		return this.name.equals(AP.name);
+		}
+		
+		ApartmentComplex ap = (ApartmentComplex) o;
+		return this.name.equals(ap.name);
 	}
 
 	/**
@@ -203,14 +210,17 @@ public class ApartmentComplex implements IProperty, Comparable<IProperty> {
 	 * @param There must be a Apartment as input in order to create it.
 	 */
 	public void addApartment(Apartment a) {
-		if (a == null)
+		if (a == null) {
 			return;
+		}
+		
 		apartments.add(a);
 	}
 
 	public void deleteApartment(Apartment a) {
-		if (a != null)
+		if (a != null) {
 			apartments.remove(a);
+		}
 	}
 
 	public List<Apartment> findApartments() {

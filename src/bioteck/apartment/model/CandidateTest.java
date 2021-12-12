@@ -9,15 +9,15 @@ import org.junit.jupiter.api.Test;
 public class CandidateTest {
 	@Test
 	public void testCreate() {
-		Candidate C = Candidate.create("899-99-9999", "Smith", "John", "5 Main Street, BigTown, Country",
+		Candidate c = Candidate.create("899-99-9999", "Smith", "John", "5 Main Street, BigTown, Country",
 				"100-200-3000");
-		assertEquals(C.getPhoneNumber(), "100-200-3000");
-		assertEquals(C.getAddress(), "5 Main Street, BigTown, Country");
-		C.setSalary(5000);
-		assertEquals(C.getSalary(), 5000);
-		assertEquals(C.getFName(), "John");
-		assertEquals(C.getLName(), "Smith");
-		assertEquals(C.getSocialSecurity(), "899-99-9999");
+		assertEquals(c.getPhoneNumber(), "100-200-3000");
+		assertEquals(c.getAddress(), "5 Main Street, BigTown, Country");
+		c.setSalary(5000);
+		assertEquals(c.getSalary(), 5000);
+		assertEquals(c.getFName(), "John");
+		assertEquals(c.getLName(), "Smith");
+		assertEquals(c.getSocialSecurity(), "899-99-9999");
 	}
 
 	@Test

@@ -98,11 +98,14 @@ public class PropertyPortfolio implements Comparable<PropertyPortfolio> {
 	 * @return A Cost double (sum of costs for all Apartment Complex(s) included in
 	 *         Portfolio)
 	 */
-	public double Cost() throws IllegalArgumentException {
-		double Cost = properties.stream().mapToDouble(p -> p.getCost()).sum();
-		if (Cost < 0)
+	public double cost() throws IllegalArgumentException {
+		double cost = properties.stream().mapToDouble(p -> p.getCost()).sum();
+		
+		if (cost < 0) {
 			throw new IllegalArgumentException("There is no such thing as a negative cost");
-		return Cost;
+		}
+		
+		return cost;
 	}
 
 	/**
@@ -110,11 +113,13 @@ public class PropertyPortfolio implements Comparable<PropertyPortfolio> {
 	 * 
 	 * @return A Revenue double (sum of all rents collected)
 	 */
-	public double Revenue() throws IllegalArgumentException {
-		OccupancyBook B = OccupancyBook.getSingleton();
-		if (properties.stream().mapToDouble(p -> B.monthlyRevenue(p)).sum() < 0)
+	public double revenue() throws IllegalArgumentException {
+		OccupancyBook ob = OccupancyBook.getSingleton();
+		if (properties.stream().mapToDouble(p -> ob.monthlyRevenue(p)).sum() < 0) {
 			throw new IllegalArgumentException("Revenue can't be negative.");
-		return properties.stream().mapToDouble(p -> B.monthlyRevenue(p)).sum();
+		}
+		
+		return properties.stream().mapToDouble(p -> ob.monthlyRevenue(p)).sum();
 	}
 
 	/**
@@ -122,8 +127,8 @@ public class PropertyPortfolio implements Comparable<PropertyPortfolio> {
 	 * 
 	 * @return A Profit double (Revenue - Cost)
 	 */
-	public double Profit() {
-		return Revenue() - Cost();
+	public double profit() {
+		return revenue() - cost();
 	}
 
 	/**
@@ -132,10 +137,12 @@ public class PropertyPortfolio implements Comparable<PropertyPortfolio> {
 	 * @param number of developers
 	 * @return Salary of each developer as Profit / Engineers in project
 	 */
-	public double Salary(int EngineerNum) throws IllegalArgumentException {
-		if (EngineerNum <= 0)
+	public double salary(int engineerNum) throws IllegalArgumentException {
+		if (engineerNum <= 0) {
 			throw new IllegalArgumentException("Can guarantee at least one person programmed this software.");
-		return Profit() / EngineerNum;
+		}
+		
+		return profit() / engineerNum;
 	}
 
 	/**
@@ -155,12 +162,17 @@ public class PropertyPortfolio implements Comparable<PropertyPortfolio> {
 	 *         portfolio and the current owner are different
 	 */
 	public boolean equals(Object o) {
-		if (o == null || !(o instanceof PropertyPortfolio))
+		if (o == null || !(o instanceof PropertyPortfolio)) {
 			return false;
-		PropertyPortfolio Port = (PropertyPortfolio) o;
-		if (this.owner != Port.owner || this.name != Port.name)
+		}
+		
+		PropertyPortfolio pp = (PropertyPortfolio) o;
+		
+		if (this.owner != pp.owner || this.name != pp.name) {
 			return false;
-		return true;
+		}
+		
+		return true;		
 	}
 
 	/**
@@ -170,9 +182,12 @@ public class PropertyPortfolio implements Comparable<PropertyPortfolio> {
 	 * @return Integer to be used by a TreeSet in locating data
 	 */
 	public int compareTo(PropertyPortfolio Port) {
-		int A = this.getOwner().compareTo(Port.getOwner());
-		if (A != 0)
-			return A;
+		int a = this.getOwner().compareTo(Port.getOwner());
+		
+		if (a != 0) {
+			return a;
+		}
+		
 		return this.getName().compareTo(Port.getName());
 	}
 
@@ -181,10 +196,12 @@ public class PropertyPortfolio implements Comparable<PropertyPortfolio> {
 	 * 
 	 * @param A Apartment Complex
 	 */
-	public void addProperty(ApartmentComplex prop) {
-		if (prop == null)
+	public void addProperty(ApartmentComplex property) {
+		if (property == null) {
 			return;
-		properties.add(prop);
+		}
+		
+		properties.add(property);
 	}
 
 	/**
@@ -192,10 +209,12 @@ public class PropertyPortfolio implements Comparable<PropertyPortfolio> {
 	 * 
 	 * @param A Apartment Complex
 	 */
-	public void removeProperty(IProperty prop) {
-		if (prop == null)
+	public void removeProperty(IProperty property) {
+		if (property == null) {
 			return;
-		properties.remove(prop);
+		}
+		
+		properties.remove(property);
 	}
 
 	/**

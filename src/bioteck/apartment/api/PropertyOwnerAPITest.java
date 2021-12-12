@@ -5,13 +5,14 @@ import static io.restassured.RestAssured.*;
 import java.util.List;
 import java.util.Map;
 
+import javax.ws.rs.core.Response;
+
 import org.junit.jupiter.api.Test;
 
 import bioteck.apartment.model.PropertyOwner;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.http.Header;
-import io.restassured.response.Response;
 
 public class PropertyOwnerAPITest {
 	private Header acceptJson = new Header("Accept", "application/json");

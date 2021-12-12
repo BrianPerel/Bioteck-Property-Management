@@ -53,13 +53,10 @@ public class Apartment implements Comparable<Apartment> {
 	@OneToMany(mappedBy = "apartment", targetEntity = Candidate2Apartment.class, cascade = { CascadeType.ALL })
 	private List<Candidate2Apartment> c2a = new ArrayList<Candidate2Apartment>();
 
-	private Apartment() {
-	}
-
 	/**
 	 * A proper replacement to Null
 	 */
-	public final static Apartment EMPTY = new Apartment(ApartmentComplex.EMPTY, 1);
+	public static final Apartment EMPTY = new Apartment(ApartmentComplex.EMPTY, 1);
 
 	/**
 	 * A private Constructor for the Apartment Class. Tests if the inputs are valid.

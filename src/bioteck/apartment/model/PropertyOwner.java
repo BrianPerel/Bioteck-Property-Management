@@ -63,10 +63,12 @@ public class PropertyOwner implements IReachable, Comparable<PropertyOwner> {
 	 * @throws IllegalArgumentException if Name is null
 	 */
 	public PropertyOwner(String taxID, String name) {
-		if (taxID == null)
+		if (taxID == null) {
 			throw new IllegalArgumentException("null taxID");
-		if (name == null)
+		}
+		if (name == null) {
 			throw new IllegalArgumentException("null name");
+		}
 
 		this.taxID = taxID;
 		this.name = name;

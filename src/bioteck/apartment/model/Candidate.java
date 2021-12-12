@@ -14,7 +14,6 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
-//import org.hibernate.annotations.NaturalId;
 /**
  * Represents Portfolios of Properties
  * 
@@ -60,13 +59,13 @@ public class Candidate implements Comparable<Candidate> {
 	/**
 	 * Alternative to Null
 	 */
-	public final static Candidate EMPTY = Candidate.create("", "", "", "", "");
+	public static final Candidate EMPTY = Candidate.create("", "", "", "", "");
 
 	/**
 	 * MIN and MAX parameters for a given Candidate's SSID
 	 */
-	public final static Candidate MIN = Candidate.create("000-00-0000", "", "", "", "");
-	public final static Candidate MAX = Candidate.create("899-99-9999", "", "", "", "");
+	public static final Candidate MIN = Candidate.create("000-00-0000", "", "", "", "");
+	public static final Candidate MAX = Candidate.create("899-99-9999", "", "", "", "");
 
 	/**
 	 * Constructor
@@ -82,17 +81,17 @@ public class Candidate implements Comparable<Candidate> {
 	 * @throws IllegalArgumentException if Address is null
 	 * @throws IllegalArgumentException if Phone Number is null
 	 */
-	public Candidate(String SocialSecurity, String LName, String FName) throws IllegalArgumentException {
-		if (FName == null)
+	public Candidate(String socialSecurity, String lName, String fName) throws IllegalArgumentException {
+		if (fName == null)
 			throw new IllegalArgumentException("Everybody has a first name presumibly. No name was provided.");
-		if (LName == null)
+		if (lName == null)
 			throw new IllegalArgumentException("Everybody has a last name presumibly. No name was provided.");
-		if (SocialSecurity == null)
+		if (socialSecurity == null)
 			throw new IllegalArgumentException(
 					"Every candidate must have a social security number to be included, none was provided.");
-		this.fname = FName;
-		this.lname = LName;
-		this.socialSecurity = SocialSecurity;
+		this.fname = fName;
+		this.lname = lName;
+		this.socialSecurity = socialSecurity;
 	}
 
 	public static Candidate create(String socialSecurity, String lname, String fname, String address,
@@ -115,8 +114,8 @@ public class Candidate implements Comparable<Candidate> {
 	 * 
 	 * @param A Phone Number String
 	 */
-	public void setPhoneNumber(String PhoneNum) {
-		this.phoneNum = PhoneNum;
+	public void setPhoneNumber(String phoneNum) {
+		this.phoneNum = phoneNum;
 	}
 
 	/**
@@ -147,8 +146,8 @@ public class Candidate implements Comparable<Candidate> {
 	 * 
 	 * @param A Salary amount
 	 */
-	public void setSalary(double Salary) {
-		this.salary = Salary;
+	public void setSalary(double salary) {
+		this.salary = salary;
 	}
 
 	/**
@@ -186,10 +185,12 @@ public class Candidate implements Comparable<Candidate> {
 	 * @return True if not null and a instance of Candidates
 	 */
 	public boolean equals(Object o) {
-		if (o == null || !(o instanceof Candidate))
+		if (o == null || !(o instanceof Candidate)) {
 			return false;
-		Candidate C = (Candidate) o;
-		return this.socialSecurity == C.socialSecurity;
+		}
+		
+		Candidate c = (Candidate) o;
+		return this.socialSecurity == c.socialSecurity;
 	}
 
 	/**

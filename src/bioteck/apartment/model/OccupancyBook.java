@@ -47,10 +47,12 @@ public class OccupancyBook {
 	 * @param A Apartment for the Candidate to rent
 	 */
 	public void addRenterToApartment(Candidate renter, Apartment apt) {
-		if (renter == (Candidate) null || renter == Candidate.EMPTY)
+		if (renter == (Candidate) null || renter == Candidate.EMPTY) {
 			return;
-		if (apt == (Apartment) null || apt == Apartment.EMPTY)
+		}
+		if (apt == (Apartment) null || apt == Apartment.EMPTY) {
 			return;
+		}
 
 		DB.transact(s -> {
 			List<Candidate> rr = s
@@ -76,10 +78,12 @@ public class OccupancyBook {
 	 */
 	public void removeRenterFromApartment(Candidate renter, Apartment apt) {
 
-		if (renter == null || renter == Candidate.EMPTY)
+		if (renter == null || renter == Candidate.EMPTY) {
 			return;
-		if (apt == null || apt == Apartment.EMPTY)
+		}
+		if (apt == null || apt == Apartment.EMPTY) {
 			return;
+		}
 
 		DB.transact(s -> {
 			s.createQuery("delete Candidate2Apartment c2a where " + "c2a.apartment = :acn and " + "c2a.renter = :cssn ")
@@ -88,15 +92,16 @@ public class OccupancyBook {
 	}
 
 	/**
-	 * Creates a Set for all Tenants of a given Apartmennt
+	 * Creates a Set for all Tenants of a given Apartment
 	 * 
 	 * @param A Apartment to base the Set off of
 	 * @return A Set of Candidates for the given Apartment
 	 */
 	public Set<Candidate> rentersForApartment(Apartment a) {
 
-		if (a == null)
+		if (a == null) {
 			return new HashSet<Candidate>();
+		}
 
 		List<Candidate2Apartment> ra = DB.query(s -> s
 				.createQuery("select c2a " + "from Candidate2Apartment c2a "
@@ -145,8 +150,9 @@ public class OccupancyBook {
 	 * @return The monthly revenue of the provided complex
 	 */
 	public double monthlyRevenue(ApartmentComplex property) {
-		if (property == null)
+		if (property == null) {
 			return 0.0;
+		}
 
 		List<Candidate2Apartment> ac = DB
 				.query(s -> s

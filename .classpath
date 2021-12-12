@@ -57,5 +57,14 @@
 	<classpathentry kind="lib" path="hibernate/lib/vibur-dbcp-25.0.jar"/>
 	<classpathentry kind="lib" path="hibernate/lib/vibur-object-pool-25.0.jar"/>
 	<classpathentry kind="lib" path="REST/javax.ws.rs-api-2.1.1.jar"/>
+	<classpathentry kind="lib" path="io.restassured/commons-lang3-3.11.jar"/>
+	<classpathentry kind="lib" path="io.restassured/groovy-3.0.8.jar"/>
+	<classpathentry kind="lib" path="io.restassured/groovy-json-3.0.8.jar"/>
+	<classpathentry kind="lib" path="io.restassured/groovy-xml-3.0.8.jar"/>
+	<classpathentry kind="lib" path="io.restassured/jakarta.activation-api-1.2.2.jar"/>
+	<classpathentry kind="lib" path="io.restassured/jakarta.xml.bind-api-2.3.3.jar"/>
+	<classpathentry kind="lib" path="io.restassured/jaxb-impl-2.3.3.jar"/>
+	<classpathentry kind="lib" path="io.restassured/rest-assured-all-4.4.0.jar"/>
+	<classpathentry kind="lib" path="io.restassured/tagsoup-1.2.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
