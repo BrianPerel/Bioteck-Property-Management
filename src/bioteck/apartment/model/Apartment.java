@@ -192,7 +192,7 @@ public class Apartment implements Comparable<Apartment> {
 	 * @param IsRented Apartment is rented (true) or not (false)
 	 * @return The Apartment Object.
 	 */
-	static Apartment create(ApartmentComplex complex, int number, double rent, String desc) {
+	public static Apartment create(ApartmentComplex complex, int number, double rent, String desc) {
 		Apartment a = new Apartment(complex, number);
 		a.setRent(rent);
 		a.setApartmentDescription(desc);
