@@ -1,4 +1,4 @@
-# Bioteck-Property-Management
+# bioteck-property-management
 
 Blue Team - HW4 model and HW5 API's
 
