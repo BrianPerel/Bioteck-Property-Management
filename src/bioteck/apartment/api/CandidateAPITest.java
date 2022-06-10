@@ -1,6 +1,6 @@
 package bioteck.apartment.api;
 
-import static io.restassured.RestAssured.*;
+import static io.restassured.RestAssured.given;
 
 import java.util.List;
 import java.util.Map;

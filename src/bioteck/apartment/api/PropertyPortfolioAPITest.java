@@ -1,11 +1,10 @@
 package bioteck.apartment.api;
 
-import static io.restassured.RestAssured.*;
+import static io.restassured.RestAssured.get;
+import static io.restassured.RestAssured.given;
 
 import java.util.List;
 import java.util.Map;
-
-import javax.ws.rs.core.Response;
 
 import org.junit.jupiter.api.Test;
 
@@ -14,6 +13,7 @@ import bioteck.apartment.model.PropertyPortfolio;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.http.Header;
+import io.restassured.response.Response;
 
 public class PropertyPortfolioAPITest {
 	private Header acceptJson = new Header("Accept", "application/json");
@@ -29,7 +29,7 @@ public class PropertyPortfolioAPITest {
 
 		given().contentType(ContentType.JSON).header(acceptJson).body(propertyowner).expect().statusCode(204).log()
 				.ifError().when().post("/property-owners");
-		pp1.setOwner(get("property-owners/{1}"));
+		pp1.setOwner((PropertyOwner) get("property-owners/{1}"));
 	}
 
 	private void addTestPropertyPortfolio(PropertyPortfolio propertyportfolio) {
