@@ -11,52 +11,52 @@ plugins {
     id 'java'
 	// Apply the application plugin to add support for building an application
     id 'war'
-    // id 'application'
-    id 'org.gretty' version '2.2.0'
 }
 
+group 'BlueTeam'
+version '1.0-SNAPSHOT'
+sourceCompatibility = JavaVersion.VERSION_17
 
 dependencies {
     // This dependency is found on compile classpath of this component and consumers.
-    compile 'com.google.guava:guava:23.0'
-    compile ('org.hibernate:hibernate-core:5.3.6.Final') {
+    implementation 'com.google.guava:guava:23.0'
+    implementation ('org.hibernate:hibernate-core:5.3.6.Final') {
     	    exclude group: 'org.jboss.logging', module: 'jboss-logging'
-    }	
-    compile 'org.jboss.logging:jboss-logging:3.2.0.Final'
-    compile 'org.hibernate:hibernate-validator:5.1.1.Final'
-    compile 'javax.validation:validation-api:2.0.1.Final'
-    compile 'org.hibernate:hibernate-c3p0:5.3.7.Final'
+    }
+    implementation 'org.jboss.logging:jboss-logging:3.2.0.Final'
+    implementation 'org.hibernate:hibernate-validator:5.1.1.Final'
+    implementation 'javax.validation:validation-api:2.0.1.Final'
+    implementation 'org.hibernate:hibernate-c3p0:5.3.7.Final'
 
-    compile 'mysql:mysql-connector-java:8.0.12'
-    compile 'org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.2.Final'
+	implementation 'mysql:mysql-connector-java:8.0.12'
+    implementation 'org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.2.Final'
 
-    compile 'org.jboss.resteasy:resteasy-jaxrs:3.0.8.Final'
-    compile 'org.jboss.resteasy:resteasy-jackson2-provider:3.0.8.Final'
-    compile 'org.jboss.resteasy:resteasy-cdi:3.0.8.Final'
-    compile 'javax.enterprise:cdi-api:1.2'
+    implementation 'org.jboss.resteasy:resteasy-jaxrs:3.0.8.Final'
+    implementation 'org.jboss.resteasy:resteasy-jackson2-provider:3.0.8.Final'
+    implementation 'org.jboss.resteasy:resteasy-cdi:3.0.8.Final'
+    implementation 'javax.enterprise:cdi-api:1.2'
 
-    compile 'org.jboss.weld:weld-core:2.2.4.Final'
-    compile 'org.jboss.weld:weld-core-impl:2.2.4.Final'
-    compile 'org.jboss.weld.servlet:weld-servlet:2.2.4.Final'
+    implementation 'org.jboss.weld:weld-core:2.2.4.Final'
+    implementation 'org.jboss.weld:weld-core-impl:2.2.4.Final'
+    implementation 'org.jboss.weld.servlet:weld-servlet:2.2.4.Final'
 
     // Use JUnit test framework
-    testCompile('io.rest-assured:rest-assured:3.2.0')
-    testCompile('org.junit.jupiter:junit-jupiter-api:5.3.1')
-    testCompile('org.junit.jupiter:junit-jupiter-params:5.3.1')
-    testRuntime('org.junit.jupiter:junit-jupiter-engine:5.3.1')
+    testImplementation ('io.rest-assured:rest-assured:4.4.0')
+    testImplementation ('org.junit.jupiter:junit-jupiter-api:5.3.1')
+    testImplementation ('org.junit.jupiter:junit-jupiter-params:5.3.1')
+    testRuntimeOnly ('org.junit.jupiter:junit-jupiter-engine:5.3.1')
 }
 
 // In this section you declare where to find the dependencies of your project
 repositories {
     // Use jcenter for resolving your dependencies.
     // You can declare any Maven/Ivy/file repository here.
-    jcenter()
     mavenCentral()
 }
 
 test {
 	useJUnitPlatform()
 	testLogging {
-		events "passed", "skipped", "failed"
+		events 'passed', 'skipped', 'failed'
 	}
 }
