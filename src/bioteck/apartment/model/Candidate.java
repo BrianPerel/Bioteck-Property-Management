@@ -16,7 +16,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 /**
  * Represents Portfolios of Properties
- * 
+ *
  * @version 3
  */
 @Entity
@@ -51,10 +51,7 @@ public class Candidate implements Comparable<Candidate> {
 	private double salary = 0.0;
 
 	@OneToMany(mappedBy = "renter", targetEntity = Candidate2Apartment.class, cascade = { CascadeType.ALL })
-	private List<Candidate2Apartment> c2a = new ArrayList<Candidate2Apartment>();
-
-	private Candidate() {
-	}
+	private List<Candidate2Apartment> c2a = new ArrayList<>();
 
 	/**
 	 * Alternative to Null
@@ -69,7 +66,7 @@ public class Candidate implements Comparable<Candidate> {
 
 	/**
 	 * Constructor
-	 * 
+	 *
 	 * @param SSID
 	 * @param Last    Name of Candidate
 	 * @param First   Name of Candidate
@@ -82,13 +79,17 @@ public class Candidate implements Comparable<Candidate> {
 	 * @throws IllegalArgumentException if Phone Number is null
 	 */
 	public Candidate(String socialSecurity, String lName, String fName) throws IllegalArgumentException {
-		if (fName == null)
+		if (fName == null) {
 			throw new IllegalArgumentException("Everybody has a first name presumibly. No name was provided.");
-		if (lName == null)
+		}
+		if (lName == null) {
 			throw new IllegalArgumentException("Everybody has a last name presumibly. No name was provided.");
-		if (socialSecurity == null)
+		}
+		if (socialSecurity == null) {
 			throw new IllegalArgumentException(
 					"Every candidate must have a social security number to be included, none was provided.");
+		}
+
 		this.fname = fName;
 		this.lname = lName;
 		this.socialSecurity = socialSecurity;
@@ -111,7 +112,7 @@ public class Candidate implements Comparable<Candidate> {
 
 	/**
 	 * Sets Phone Number of a Candidate if it has to be changed
-	 * 
+	 *
 	 * @param A Phone Number String
 	 */
 	public void setPhoneNumber(String phoneNum) {
@@ -143,7 +144,7 @@ public class Candidate implements Comparable<Candidate> {
 	 * Sets salary of a Candidate For the exception here, it makes sense that some
 	 * people's income is negative if they are in debt and unemployed(worst
 	 * candidate of all)
-	 * 
+	 *
 	 * @param A Salary amount
 	 */
 	public void setSalary(double salary) {
@@ -160,14 +161,14 @@ public class Candidate implements Comparable<Candidate> {
 	/**
 	 * @return A Candidate's First Name
 	 */
-	public String getFName() {
+	public String getFname() {
 		return this.fname;
 	}
 
 	/**
 	 * @return A Candidate's Last Name
 	 */
-	public String getLName() {
+	public String getLname() {
 		return this.lname;
 	}
 
@@ -180,22 +181,22 @@ public class Candidate implements Comparable<Candidate> {
 
 	/**
 	 * Equals Method
-	 * 
+	 *
 	 * @param Takes a object
 	 * @return True if not null and a instance of Candidates
 	 */
 	public boolean equals(Object o) {
-		if (o == null || !(o instanceof Candidate)) {
+		if (!(o instanceof Candidate)) {
 			return false;
 		}
-		
+
 		Candidate c = (Candidate) o;
 		return this.socialSecurity == c.socialSecurity;
 	}
 
 	/**
 	 * Hash Code for various data structures
-	 * 
+	 *
 	 * @return integer value from hashcode
 	 */
 	public int hashCode() {
@@ -204,7 +205,7 @@ public class Candidate implements Comparable<Candidate> {
 
 	/**
 	 * compareTo method
-	 * 
+	 *
 	 * @param A Candidate
 	 * @return Integer to be used by a TreeSet in locating data
 	 */

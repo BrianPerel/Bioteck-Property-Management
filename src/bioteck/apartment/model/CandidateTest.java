@@ -15,8 +15,8 @@ public class CandidateTest {
 		assertEquals(c.getAddress(), "5 Main Street, BigTown, Country");
 		c.setSalary(5000);
 		assertEquals(c.getSalary(), 5000);
-		assertEquals(c.getFName(), "John");
-		assertEquals(c.getLName(), "Smith");
+		assertEquals(c.getFname(), "John");
+		assertEquals(c.getLname(), "Smith");
 		assertEquals(c.getSocialSecurity(), "899-99-9999");
 	}
 

@@ -3,6 +3,7 @@ package bioteck.apartment.db;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -12,7 +13,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 /**
  * Required class to build a session for the database
- * 
+ *
  * @version 3
  */
 public class DB {
@@ -24,13 +25,14 @@ public class DB {
 		setup();
 	}
 
-	private void setup() throws RuntimeException {
+	private void setup() throws HibernateException {
 		final StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure().build();
+
 		try {
 			sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
 		} catch (Exception e) {
 			StandardServiceRegistryBuilder.destroy(registry);
-			throw new RuntimeException("Config Error.");
+			throw new HibernateException("Config Error.");
 		}
 	}
 
@@ -41,6 +43,7 @@ public class DB {
 	public static void transact(ITr tt) {
 		Session s = DB.openSession();
 		Transaction t = null;
+
 		try {
 			t = s.beginTransaction();
 			tt.process(s);
@@ -54,7 +57,8 @@ public class DB {
 
 	public static <T> List<T> query(IQuery<T> q) {
 		Session s = DB.openSession();
-		List<T> output = new ArrayList<T>();
+		List<T> output = new ArrayList<>();
+
 		try {
 			output = q.process(s);
 		} catch (Exception e) {

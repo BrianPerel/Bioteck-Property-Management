@@ -22,7 +22,7 @@ import bioteck.apartment.db.IProperty;
 /**
  * Represents an Apartment Object with it's own unique attributes like a rent, a
  * number, and a status of being rented or not.
- * 
+ *
  * @Version 2
  */
 
@@ -51,7 +51,7 @@ public class Apartment implements Comparable<Apartment> {
 	private String desc = "";
 
 	@OneToMany(mappedBy = "apartment", targetEntity = Candidate2Apartment.class, cascade = { CascadeType.ALL })
-	private List<Candidate2Apartment> c2a = new ArrayList<Candidate2Apartment>();
+	private List<Candidate2Apartment> c2a = new ArrayList<>();
 
 	/**
 	 * A proper replacement to Null
@@ -60,7 +60,7 @@ public class Apartment implements Comparable<Apartment> {
 
 	/**
 	 * A private Constructor for the Apartment Class. Tests if the inputs are valid.
-	 * 
+	 *
 	 * @param complex Takes a complex provided through the IProperty interface iff
 	 *                is not null.
 	 * @param number  Takes a Apartment number iff is positive.
@@ -68,10 +68,13 @@ public class Apartment implements Comparable<Apartment> {
 	 * @throws IllegalArgumentException if a complex's number is non positive.
 	 */
 	public Apartment(ApartmentComplex complex, int number) throws IllegalArgumentException {
-		if (complex == null)
+		if (complex == null) {
 			throw new IllegalArgumentException("Every complex has a name. This complex was input as null.");
-		if (number <= 0)
+		}
+		if (number <= 0) {
 			throw new IllegalArgumentException("Apartment numbers are always positive. This number is not positive.");
+		}
+
 		this.complex = complex;
 		this.number = number;
 	}
@@ -82,7 +85,7 @@ public class Apartment implements Comparable<Apartment> {
 
 	/**
 	 * Provides the Number of a Apartment to identify it.
-	 * 
+	 *
 	 * @return A Apartment number.
 	 */
 	public int getNumber() {
@@ -91,7 +94,7 @@ public class Apartment implements Comparable<Apartment> {
 
 	/**
 	 * Provides the Complex the Apartment belongs to.
-	 * 
+	 *
 	 * @return A Complex of type IProperty
 	 */
 	public IProperty getComplex() {
@@ -100,7 +103,7 @@ public class Apartment implements Comparable<Apartment> {
 
 	/**
 	 * Provides Rent of the Apartment.
-	 * 
+	 *
 	 * @return Rent of the Apartment Object
 	 */
 	public double getRent() {
@@ -109,22 +112,27 @@ public class Apartment implements Comparable<Apartment> {
 
 	public int compareTo(Apartment a) {
 		int x = this.complex.compareTo(a.complex);
-		if (x != 0)
+
+		if (x != 0) {
 			return x;
+		}
+
 		return Integer.valueOf(this.number).compareTo(Integer.valueOf(a.number));
 	}
 
 	/**
 	 * Sets Rent of the Apartment, checking for any negative rent values.
-	 * 
+	 *
 	 * @param rent A rent value determined in the Complex class
 	 * @throws IllegalArgumentException if rent is less than 0, as this would be
 	 *                                  giving money to tenants
 	 */
 	public void setRent(double rent) throws IllegalArgumentException {
-		if (rent < 0.0)
+		if (rent < 0.0) {
 			throw new IllegalArgumentException(
 					"You cannot have a negative rent unless paying tenants for living in the apartment is some sort of charity.");
+		}
+
 		this.rent = rent;
 	}
 
@@ -133,8 +141,10 @@ public class Apartment implements Comparable<Apartment> {
 	 *               rooms, floor on complex, etc)
 	 */
 	public void setApartmentDescription(String desc) {
-		if (desc == null)
+		if (desc == null) {
 			return;
+		}
+
 		this.desc = desc;
 	}
 
@@ -148,15 +158,17 @@ public class Apartment implements Comparable<Apartment> {
 	/**
 	 * Equals method for a Apartment Object. Makes sure said object is not null and
 	 * is a instance of the Apartment class
-	 * 
+	 *
 	 * @param o Requires a Object as input
 	 * @return comes false if the object is null or not a instance of Apartment, or
 	 *         calls itself recursively and sets the relevant number to access to
 	 *         the next.
 	 */
 	public boolean equals(Object o) {
-		if (!(o instanceof Apartment))
+		if (!(o instanceof Apartment)) {
 			return false;
+		}
+
 		Apartment a = (Apartment) o;
 		return this.complex.equals(a.complex) && this.number == a.number;
 	}
@@ -171,7 +183,7 @@ public class Apartment implements Comparable<Apartment> {
 	/**
 	 * Builds the parts of the Strings that are in the ApartmentComplex[] square
 	 * brackets (rent, apt num, rent status, Complex Name)
-	 * 
+	 *
 	 * @return The String created with the Stringbuilder class.
 	 */
 	public String toString() {
@@ -185,7 +197,7 @@ public class Apartment implements Comparable<Apartment> {
 
 	/**
 	 * Create a Apartment Object
-	 * 
+	 *
 	 * @param complex  Apartment Complex
 	 * @param number   Apartment Number
 	 * @param rent     Apartment Rent

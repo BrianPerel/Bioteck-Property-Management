@@ -24,7 +24,6 @@ public class CandidateAPITest {
 
 	private void addTestCandidate(Candidate candidate) {
 		setup();
-
 		given().contentType(ContentType.JSON).header(acceptJson).body(candidate).expect().statusCode(204).log()
 				.ifError().when().post("/candidates");
 	}
@@ -49,14 +48,12 @@ public class CandidateAPITest {
 	@Test
 	public void removeCandidateTest() {
 		setup();
-
 		removeTestCandidate(c1.getSocialSecurity());
 	}
 
 	@Test
 	public void queryTest() {
 		setup();
-
 		Response response = given().queryParam("searchany", c1.getPhoneNumber()).expect().statusCode(200).log()
 				.ifError().when().get("/candidates/query");
 	}

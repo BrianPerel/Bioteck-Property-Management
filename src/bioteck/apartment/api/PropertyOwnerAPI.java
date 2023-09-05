@@ -32,8 +32,10 @@ public class PropertyOwnerAPI {
 	@GET
 	@Path("/query")
 	public List<PropertyOwner> query(@QueryParam("searchany") String str) {
-		if (str == null)
+		if (str == null) {
 			return new ArrayList<PropertyOwner>();
+		}
+
 		String tstr = str.trim();
 		return DB
 				.query(s -> s

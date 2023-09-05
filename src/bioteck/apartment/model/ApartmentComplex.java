@@ -21,7 +21,7 @@ import bioteck.apartment.db.IProperty;
 /**
  * Represents a Apartment Complex which contains apartment(s). Can be identified
  * by it's name and it's address.
- * 
+ *
  * @Version 3
  */
 
@@ -74,13 +74,13 @@ public class ApartmentComplex implements IProperty, Comparable<IProperty> {
 		if (name == null) {
 			throw new IllegalArgumentException("Complex Name is null, which is impossible.");
 		}
-		
+
 		this.name = name;
-		
+
 		if (address == null) {
 			throw new IllegalArgumentException("Every Complex must have a address");
 		}
-		
+
 		this.address = address;
 	}
 
@@ -99,7 +99,7 @@ public class ApartmentComplex implements IProperty, Comparable<IProperty> {
 		if (desc == null) {
 			return;
 		}
-		
+
 		this.desc = desc;
 	}
 
@@ -121,8 +121,10 @@ public class ApartmentComplex implements IProperty, Comparable<IProperty> {
 	 * @param A Property Portfolio to contain the property
 	 */
 	public void setPortfolio(PropertyPortfolio portfolio) {
-		if (portfolio == null)
+		if (portfolio == null) {
 			return;
+		}
+
 		this.portfolio = portfolio;
 	}
 
@@ -135,7 +137,7 @@ public class ApartmentComplex implements IProperty, Comparable<IProperty> {
 
 	/**
 	 * Will provide the apartment complex' name
-	 * 
+	 *
 	 * @return non null Name of Apartment Complex
 	 */
 	public String getName() {
@@ -144,7 +146,7 @@ public class ApartmentComplex implements IProperty, Comparable<IProperty> {
 
 	/**
 	 * Sets the Costs for the given Complex
-	 * 
+	 *
 	 * @param cost Requires a input of cost Will only change if the cost is more
 	 *             than 0 as the government giving the owner money is rare
 	 */
@@ -164,24 +166,24 @@ public class ApartmentComplex implements IProperty, Comparable<IProperty> {
 
 	/**
 	 * A proper Equals method for the Hash Map
-	 * 
+	 *
 	 * @param o Requires a object of the ApartmentComplex type
 	 * @return the boolean status of the object/ comes false if it is either null or
 	 *         isn't a instance of the ApartmentComplex class
 	 */
 	@Override
 	public boolean equals(Object o) {
-		if (o == null || !(o instanceof ApartmentComplex)) {
+		if (!(o instanceof ApartmentComplex)) {
 			return false;
 		}
-		
+
 		ApartmentComplex ap = (ApartmentComplex) o;
 		return this.name.equals(ap.name);
 	}
 
 	/**
 	 * hashCode for the Hash Map.
-	 * 
+	 *
 	 * @return the integer in relation to the name's hashcode
 	 */
 	@Override
@@ -206,14 +208,14 @@ public class ApartmentComplex implements IProperty, Comparable<IProperty> {
 
 	/**
 	 * Creates a Apartment Object to add to the Complex Collection.
-	 * 
+	 *
 	 * @param There must be a Apartment as input in order to create it.
 	 */
 	public void addApartment(Apartment a) {
 		if (a == null) {
 			return;
 		}
-		
+
 		apartments.add(a);
 	}
 
@@ -229,7 +231,7 @@ public class ApartmentComplex implements IProperty, Comparable<IProperty> {
 
 	/**
 	 * Creates a Apartment Complex object with its own name and cost to upkeep.
-	 * 
+	 *
 	 * @param Requires a name of the complex and the total number of costs related
 	 *                 to the complex.
 	 * @return A Apartment Complex object.

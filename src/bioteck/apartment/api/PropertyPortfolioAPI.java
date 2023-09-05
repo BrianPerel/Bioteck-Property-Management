@@ -32,8 +32,10 @@ public class PropertyPortfolioAPI {
 	@GET
 	@Path("/query")
 	public List<PropertyPortfolio> query(@QueryParam("searchany") String str) {
-		if (str == null)
+		if (str == null) {
 			return new ArrayList<PropertyPortfolio>();
+		}
+
 		String tstr = str.trim();
 		return DB.query(s -> s.createQuery("select pp from PropertyPortfolio pp "
 				+ "where pp.name like :str or pp.owner.name like :str or pp.owner.taxID like :str or pp.owner.address like :str",

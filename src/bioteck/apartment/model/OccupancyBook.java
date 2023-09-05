@@ -10,7 +10,7 @@ import bioteck.apartment.db.DB;
 
 /**
  * A Occupancy Book to connect Apartments to Candidates and vice versa
- * 
+ *
  * @version 3
  */
 
@@ -23,7 +23,7 @@ public class OccupancyBook {
 
 	/**
 	 * Singleton Method
-	 * 
+	 *
 	 * @return A occupancy book
 	 */
 	public static OccupancyBook getSingleton() {
@@ -42,7 +42,7 @@ public class OccupancyBook {
 
 	/**
 	 * Adds a Candidate to a Apartment when they can become a renter
-	 * 
+	 *
 	 * @param A Candidate to add to the Apartment
 	 * @param A Apartment for the Candidate to rent
 	 */
@@ -72,12 +72,11 @@ public class OccupancyBook {
 
 	/**
 	 * Removes a Candidate from the Apartment when they are no longer renting it
-	 * 
+	 *
 	 * @param The Candidate no longer renting the Apartment
 	 * @param The Apartment he Candidate is no longer renting
 	 */
 	public void removeRenterFromApartment(Candidate renter, Apartment apt) {
-
 		if (renter == null || renter == Candidate.EMPTY) {
 			return;
 		}
@@ -93,12 +92,11 @@ public class OccupancyBook {
 
 	/**
 	 * Creates a Set for all Tenants of a given Apartment
-	 * 
+	 *
 	 * @param A Apartment to base the Set off of
 	 * @return A Set of Candidates for the given Apartment
 	 */
 	public Set<Candidate> rentersForApartment(Apartment a) {
-
 		if (a == null) {
 			return new HashSet<Candidate>();
 		}
@@ -125,7 +123,7 @@ public class OccupancyBook {
 
 	/**
 	 * Calculates rent for a given renter
-	 * 
+	 *
 	 * @param A renter
 	 * @return A Mapping of the Apartment's Rent to the Renter
 	 */
@@ -145,7 +143,7 @@ public class OccupancyBook {
 
 	/**
 	 * Calculate monthly revenue of a given Complex
-	 * 
+	 *
 	 * @param A Apartment Complex
 	 * @return The monthly revenue of the provided complex
 	 */

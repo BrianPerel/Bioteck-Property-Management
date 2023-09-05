@@ -18,7 +18,7 @@ import bioteck.apartment.db.IReachable;
 
 /**
  * Represents Property Owners of a Portfolio
- * 
+ *
  * @version 3
  */
 
@@ -56,7 +56,7 @@ public class PropertyOwner implements IReachable, Comparable<PropertyOwner> {
 
 	/**
 	 * Constructor
-	 * 
+	 *
 	 * @param Tax  ID of Owner
 	 * @param Name of Owner
 	 * @throws IllegalArgumentException if taxID is null
@@ -115,7 +115,7 @@ public class PropertyOwner implements IReachable, Comparable<PropertyOwner> {
 
 	/**
 	 * CompareTo Method
-	 * 
+	 *
 	 * @param A PropertyOwner
 	 * @return A integer to be used by Tree Sets
 	 */
@@ -125,7 +125,7 @@ public class PropertyOwner implements IReachable, Comparable<PropertyOwner> {
 
 	/**
 	 * Hash Code Method
-	 * 
+	 *
 	 * @return A integer to be used by various data structures in the code
 	 */
 	public int hashCode() {
@@ -134,20 +134,22 @@ public class PropertyOwner implements IReachable, Comparable<PropertyOwner> {
 
 	/**
 	 * Equals Method
-	 * 
+	 *
 	 * @param Takes a object
 	 * @return True if not null and a instance of Property Owner
 	 */
 	public boolean equals(Object o) {
-		if (o == null && !(o instanceof PropertyOwner))
+		if (!(o instanceof PropertyOwner)) {
 			return false;
+		}
+
 		PropertyOwner p = (PropertyOwner) o;
 		return this.taxID.equals(p.taxID);
 	}
 
 	/**
 	 * ToString for Property Owner Class
-	 * 
+	 *
 	 * @return A string will all related information
 	 */
 	public String toString() {

@@ -32,8 +32,10 @@ public class CandidateAPI {
 	@GET
 	@Path("/query")
 	public List<Candidate> query(@QueryParam("searchany") String str) {
-		if (str == null)
+		if (str == null) {
 			return new ArrayList<Candidate>();
+		}
+
 		String tstr = str.trim();
 		return DB.query(s -> s
 				.createQuery("select c from Candidate c "

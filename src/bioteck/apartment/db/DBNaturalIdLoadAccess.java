@@ -4,7 +4,7 @@ import java.util.Map.Entry;
 
 import org.hibernate.NaturalIdLoadAccess;
 
-public interface DBNaturalIdLoadAccess extends NaturalIdLoadAccess {
+public interface DBNaturalIdLoadAccess extends NaturalIdLoadAccess<Object> {
 
 	DBNaturalIdLoadAccess getWrapped();
 

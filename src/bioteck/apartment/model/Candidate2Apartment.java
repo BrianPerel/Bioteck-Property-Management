@@ -11,7 +11,7 @@ import javax.persistence.Table;
 /**
  * A Key from a Renter to a Apartment to be used for the Renter2Apartment Tree
  * Set in the Occupancy Book class
- * 
+ *
  * @version 2
  */
 
@@ -33,22 +33,21 @@ public class Candidate2Apartment {
 
 	/**
 	 * Constructor
-	 * 
+	 *
 	 * @param A Candidate
 	 * @param A Apartment
 	 * @throws IllegalArgumentException if the candidate is null
 	 * @throws IllegalArgumentException if the apartment owner is null
 	 */
-
-	private Candidate2Apartment() {
-	}
-
 	public Candidate2Apartment(Candidate renter, Apartment apt) throws IllegalArgumentException {
-		if (apt == null)
+		if (apt == null) {
 			throw new IllegalArgumentException("there cannot be a key here if there is no apartment to reference from");
-		if (renter == null)
+		}
+		if (renter == null) {
 			throw new IllegalArgumentException(
 					"there cannot be a key if there is no renter of an apartment to reference from");
+		}
+
 		this.apartment = apt;
 		this.renter = renter;
 	}
@@ -75,6 +74,6 @@ public class Candidate2Apartment {
 	}
 
 	public String toString() {
-		return ("Apartment " + apartment.getNumber() + " Candidate " + renter.getFName());
+		return ("Apartment " + apartment.getNumber() + " Candidate " + renter.getFname());
 	}
 }

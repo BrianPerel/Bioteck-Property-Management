@@ -32,8 +32,10 @@ public class ApartmentComplexAPI {
 	@GET
 	@Path("/query")
 	public List<ApartmentComplex> query(@QueryParam("searchany") String str) {
-		if (str == null)
+		if (str == null) {
 			return new ArrayList<ApartmentComplex>();
+		}
+
 		String tstr = str.trim();
 		return DB.query(s -> s.createQuery("select ac from ApartmentComplex ac "
 				+ "where ac.name like :str or ac.portfolio.name like :str or ac.address like :str or ac.desc like :str",

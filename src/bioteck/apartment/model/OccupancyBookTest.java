@@ -32,7 +32,6 @@ public class OccupancyBookTest {
 
 	@BeforeEach
 	void init() {
-
 		this.renter1 = Candidate.create("124-55-0000", "Kasich", "John", "100 Street Drive, Langston, North America",
 				"456-543-4543");
 		this.renter2 = Candidate.create("124-55-0010", "Brown", "Larry", "454 Corn Path, Omaha, Nebraska",
@@ -75,12 +74,10 @@ public class OccupancyBookTest {
 			s.createQuery("delete from Apartment").executeUpdate();
 			s.createQuery("delete from ApartmentComplex").executeUpdate();
 		});
-
 	}
 
 	@Test
 	void addRenterTest() {
-
 		Set<Candidate> rfapt3 = booked.rentersForApartment(apt1);
 		System.out.println(rfapt3.size());
 		assertEquals(rfapt3.size(), 2);

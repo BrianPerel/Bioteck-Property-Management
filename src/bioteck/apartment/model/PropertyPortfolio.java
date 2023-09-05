@@ -17,10 +17,11 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.NaturalId;
 
 import bioteck.apartment.db.IProperty;
+import net.bytebuddy.asm.Advice.Return;
 
 /**
  * Represents Portfolios of Properties
- * 
+ *
  * @version 3
  */
 @Entity
@@ -50,17 +51,20 @@ public class PropertyPortfolio implements Comparable<PropertyPortfolio> {
 
 	/**
 	 * Constructor
-	 * 
+	 *
 	 * @param A PropertyOwner
 	 * @param A Name for the Portfolio
 	 * @throws IllegalArgumentException if name is null
 	 * @throws IllegalArgumentException if property owner is null
 	 */
 	public PropertyPortfolio(PropertyOwner owner, String name) throws IllegalArgumentException {
-		if (name == null)
+		if (name == null) {
 			throw new IllegalArgumentException("null name");
-		if (owner == null)
+		}
+		if (owner == null) {
 			throw new IllegalArgumentException("null property owner");
+		}
+
 		this.owner = owner;
 		this.name = name;
 	}
@@ -92,7 +96,7 @@ public class PropertyPortfolio implements Comparable<PropertyPortfolio> {
 
 	/**
 	 * Calculates Cost of the Portfolio
-	 * 
+	 *
 	 * @throw IllegalArgumentException if Cost is negative. IRS seldom gives you
 	 *        money
 	 * @return A Cost double (sum of costs for all Apartment Complex(s) included in
@@ -100,31 +104,32 @@ public class PropertyPortfolio implements Comparable<PropertyPortfolio> {
 	 */
 	public double cost() throws IllegalArgumentException {
 		double cost = properties.stream().mapToDouble(p -> p.getCost()).sum();
-		
+
 		if (cost < 0) {
 			throw new IllegalArgumentException("There is no such thing as a negative cost");
 		}
-		
+
 		return cost;
 	}
 
 	/**
 	 * Calculates Revenue of the Portfolio
-	 * 
+	 *
 	 * @return A Revenue double (sum of all rents collected)
 	 */
 	public double revenue() throws IllegalArgumentException {
 		OccupancyBook ob = OccupancyBook.getSingleton();
+
 		if (properties.stream().mapToDouble(p -> ob.monthlyRevenue(p)).sum() < 0) {
 			throw new IllegalArgumentException("Revenue can't be negative.");
 		}
-		
+
 		return properties.stream().mapToDouble(p -> ob.monthlyRevenue(p)).sum();
 	}
 
 	/**
 	 * Calculates Profit
-	 * 
+	 *
 	 * @return A Profit double (Revenue - Cost)
 	 */
 	public double profit() {
@@ -133,7 +138,7 @@ public class PropertyPortfolio implements Comparable<PropertyPortfolio> {
 
 	/**
 	 * How much to pay each developer of the software
-	 * 
+	 *
 	 * @param number of developers
 	 * @return Salary of each developer as Profit / Engineers in project
 	 */
@@ -141,13 +146,13 @@ public class PropertyPortfolio implements Comparable<PropertyPortfolio> {
 		if (engineerNum <= 0) {
 			throw new IllegalArgumentException("Can guarantee at least one person programmed this software.");
 		}
-		
+
 		return profit() / engineerNum;
 	}
 
 	/**
 	 * Hash Code for various data structures
-	 * 
+	 *
 	 * @return integer value from hashcode
 	 */
 	public int hashCode() {
@@ -156,70 +161,66 @@ public class PropertyPortfolio implements Comparable<PropertyPortfolio> {
 
 	/**
 	 * Equals Method
-	 * 
+	 *
 	 * @param Takes a object
 	 * @return True if not null and a instance of Portfolios and if owner in the
 	 *         portfolio and the current owner are different
 	 */
 	public boolean equals(Object o) {
-		if (o == null || !(o instanceof PropertyPortfolio)) {
+		if (!(o instanceof PropertyPortfolio)) {
 			return false;
 		}
-		
+
 		PropertyPortfolio pp = (PropertyPortfolio) o;
-		
-		if (this.owner != pp.owner || this.name != pp.name) {
-			return false;
-		}
-		
-		return true;		
+
+		return (this.owner != pp.owner || this.name != pp.name) ? false : true;
 	}
 
 	/**
 	 * compareTo method
-	 * 
+	 *
 	 * @param A Portfolio
 	 * @return Integer to be used by a TreeSet in locating data
 	 */
 	public int compareTo(PropertyPortfolio Port) {
 		int a = this.getOwner().compareTo(Port.getOwner());
-		
+
 		if (a != 0) {
 			return a;
 		}
-		
+
 		return this.getName().compareTo(Port.getName());
 	}
 
 	/**
 	 * Adds a Complex to the Portfolio
-	 * 
+	 *
 	 * @param A Apartment Complex
 	 */
 	public void addProperty(ApartmentComplex property) {
 		if (property == null) {
 			return;
 		}
-		
+
 		properties.add(property);
 	}
 
 	/**
 	 * Removes a Complex if the user needs to from the Portfolio
-	 * 
+	 *
 	 * @param A Apartment Complex
 	 */
 	public void removeProperty(IProperty property) {
 		if (property == null) {
 			return;
 		}
-		
+
 		properties.remove(property);
 	}
 
 	/**
 	 * Gets together all Complex(s) in the Portfolio
-	 * 
+	 *
 	 * @return A Set of Apartment Complex(s)
 	 */
 	public List<ApartmentComplex> getAllProperties() {
@@ -228,7 +229,7 @@ public class PropertyPortfolio implements Comparable<PropertyPortfolio> {
 
 	/**
 	 * ToString for Portfolio Class
-	 * 
+	 *
 	 * @return A string will all related information
 	 */
 	public String toString() {

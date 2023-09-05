@@ -26,7 +26,6 @@ public class PropertyPortfolioAPITest {
 
 	private void addTestPropertyOwner(PropertyOwner propertyowner) {
 		setup();
-
 		given().contentType(ContentType.JSON).header(acceptJson).body(propertyowner).expect().statusCode(204).log()
 				.ifError().when().post("/property-owners");
 		pp1.setOwner((PropertyOwner) get("property-owners/{1}"));
@@ -34,7 +33,6 @@ public class PropertyPortfolioAPITest {
 
 	private void addTestPropertyPortfolio(PropertyPortfolio propertyportfolio) {
 		setup();
-
 		given().contentType(ContentType.JSON).header(acceptJson).body(propertyportfolio).expect().statusCode(204).log()
 				.ifError().when().post("/property-portfolios");
 	}
@@ -68,7 +66,6 @@ public class PropertyPortfolioAPITest {
 	@Test
 	public void queryTest() {
 		setup();
-
 		Response response = given().queryParam("searchany", pp1.getOwner().getTaxID()).expect().statusCode(200).log()
 				.ifError().when().get("/property-portfolios/query");
 	}

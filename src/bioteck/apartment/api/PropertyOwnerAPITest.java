@@ -23,7 +23,6 @@ public class PropertyOwnerAPITest {
 
 	private void addTestPropertyOwner(PropertyOwner propertyowner) {
 		setup();
-
 		given().contentType(ContentType.JSON).header(acceptJson).body(propertyowner).expect().statusCode(204).log()
 				.ifError().when().post("/property-owners");
 	}
@@ -34,7 +33,6 @@ public class PropertyOwnerAPITest {
 				.get("/property-owners/query");
 
 		List<Map<String, String>> propertyOwnersList = response.jsonPath().getList("");
-
 		given().pathParam("id", propertyOwnersList.get(0).get("id")).expect().statusCode(204).log().ifError().when()
 				.delete("/property-owners/{id}");
 	}
@@ -55,7 +53,6 @@ public class PropertyOwnerAPITest {
 	@Test
 	public void queryTest() {
 		setup();
-
 		Response response = given().queryParam("searchany", po1.getTaxID()).expect().statusCode(200).log().ifError()
 				.when().get("/property-owners/query");
 	}
