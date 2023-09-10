@@ -32,15 +32,4 @@
 		<nature>org.eclipse.wst.common.modulecore.ModuleCoreNature</nature>
 		<nature>org.eclipse.buildship.core.gradleprojectnature</nature>
 	</natures>
-	<filteredResources>
-		<filter>
-			<id>1690030690827</id>
-			<name>.git</name>
-			<type>10</type>
-			<matcher>
-				<id>org.eclipse.ui.ide.multiFilter</id>
-				<arguments>1.0-name-matches-false-false-.git</arguments>
-			</matcher>
-		</filter>
-	</filteredResources>
 </projectDescription>
